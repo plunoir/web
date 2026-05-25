@@ -264,16 +264,16 @@ input,textarea{font-family:inherit}
 .goal-item{padding:14px 0 14px 18px;border-bottom:1px solid var(--rule);font-size:13.5px;line-height:1.55;color:var(--ink-60);position:relative}
 .goal-item::before{content:'';position:absolute;left:0;top:20px;width:5px;height:5px;border-radius:50%;background:var(--red)}
 /* Photo strip inside about */
-.about-photo{width:100%;height:220px;object-fit:cover;object-position:center 25%;margin-top:32px;filter:grayscale(20%)}
+.about-photo{width:100%;height:220px;object-fit:cover;object-position:center 25%;margin-top:32px;margin-bottom:56px;filter:grayscale(20%)}
 
 /* ════════════════════════════════════════════════════════════════
    NUMBERS — NO separator lines, clean type-driven layout
    ════════════════════════════════════════════════════════════════ */
 .numbers-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;position:relative;gap:0}
 .num-item{padding:52px 40px 52px 0;position:relative}
-.num-val{font-family:var(--serif);font-size:clamp(48px,6.5vw,92px);font-weight:700;line-height:1;color:#fff;letter-spacing:-.04em}
+.num-val{font-family:var(--serif);font-size:clamp(48px,6.5vw,92px);font-weight:700;line-height:1;color:var(--ink);letter-spacing:-.04em}
 .num-val sup{font-size:.42em;color:var(--red);font-style:normal}
-.num-label{font-size:12px;color:rgba(255,255,255,.35);margin-top:12px;line-height:1.45;max-width:180px}
+.num-label{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.45;max-width:180px}
 
 /* ════════════════════════════════════════════════════════════════
    EVENTS — editorial asymmetric layout with photos
@@ -1024,7 +1024,7 @@ input,textarea{font-family:inherit}
   </div>
 </section>
 
-<section class="section section--dark" id="numbers" aria-labelledby="numbers-h">
+<section class="section section--white" id="numbers" aria-labelledby="numbers-h">
   <div class="wrap">
     <p class="slabel rv">Центр в цифрах</p>
     <h2 class="stitle rv d1" id="numbers-h">Результаты работы</h2>
@@ -1345,7 +1345,7 @@ input,textarea{font-family:inherit}
         <!-- Яндекс.Карта — ул. Бауманская, д. 68/8, стр. 1 -->
         <div style="margin-top:24px;border:1.5px solid var(--rule);overflow:hidden;height:320px">
           <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=37.681400%2C55.769300&z=16&pt=37.681400%2C55.769300,pm2rdl~%D0%91%D0%B0%D1%83%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+68%2F8+%D1%81%D1%82%D1%80.+1&l=map"
+            src="https://yandex.ru/map-widget/v1/?ll=37.679835%2C55.765255&z=16&pt=37.679835%2C55.765255,pm2rdl~%D0%91%D0%B0%D1%83%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+68%2F8+%D1%81%D1%82%D1%80.+1&l=map"
             width="100%"
             height="320"
             frameborder="0"
