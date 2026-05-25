@@ -128,32 +128,7 @@ input,textarea{font-family:inherit}
    1) dark base  2) gradient for text legibility on left side.
    ─────────────────────────────────────────────────────────────── */
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-map-img{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;
-  object-position:center center;
-  opacity:.22;
-  will-change:transform;
-  animation:mapDrift 50s ease-in-out infinite;
-}
-@keyframes mapDrift{
-  0%  {transform:scale(1.0) translate(0px,0px)}
-  25% {transform:scale(1.04) translate(-16px,-8px)}
-  50% {transform:scale(1.06) translate(10px,6px)}
-  75% {transform:scale(1.03) translate(-8px,10px)}
-  100%{transform:scale(1.0) translate(0px,0px)}
-}
-/* Dark base overlay — makes everything readable */
-.hero-overlay{
-  position:absolute;inset:0;
-  background:rgba(20,22,38,.82);
-}
-/* Gradient overlay — extra contrast on left where text lives */
-.hero-overlay-grad{
-  position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(20,22,38,.55) 0%,rgba(20,22,38,.0) 70%);
-}
+.hero-moscow-svg{position:absolute;inset:0;width:100%;height:100%}
 
 /* Geometric grid texture */
 .hero-grid{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(204,34,34,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(204,34,34,.035) 1px,transparent 1px);background-size:80px 80px}
@@ -275,7 +250,7 @@ input,textarea{font-family:inherit}
 .hero-scroll-line::after{content:'';position:absolute;top:-100%;left:0;width:1px;height:100%;background:#fff;animation:scrollpulse 1.8s ease-in-out infinite}
 @keyframes scrollpulse{0%{top:-100%}100%{top:200%}}
 .hero-scroll-text{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
-.hero-h1-emblem{height:1.33em;width:auto;vertical-align:middle;display:inline-block;margin-right:0}
+.hero-h1-emblem{height:1.33em;width:auto;vertical-align:middle;display:inline-block;margin-right:0;position:relative;top:-0.2em}
 
 /* ════════════════════════════════════════════════════════════════
    ABOUT
@@ -547,6 +522,33 @@ input,textarea{font-family:inherit}
   .tl{transition:none;stroke-dashoffset:0}
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important}
 }
+
+/* ── PARTNERS GRID ────────────────────────────────────────────── */
+.partners-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.partner-card{display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px 24px;border:1.5px solid var(--rule);transition:border-color .2s,box-shadow .2s}
+.partner-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.partner-logo-placeholder{width:120px;height:60px;background:var(--ink-08);border:1.5px dashed var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.partner-name{font-size:13px;font-weight:700;color:var(--ink);text-align:center;line-height:1.4}
+@media(max-width:480px){.partners-grid{grid-template-columns:1fr}}
+
+/* ── DARK SECTION TEXT OVERRIDES ─────────────────────────────── */
+.section--dark .goal-item{color:rgba(255,255,255,.7);border-bottom-color:rgba(255,255,255,.12)}
+.section--dark .goal-item::before{background:var(--red)}
+.section--dark .about-aside-title{color:var(--red);border-bottom-color:rgba(255,255,255,.12)}
+.section--dark .about-mission{color:rgba(255,255,255,.85)}
+.section--dark .strip{border-bottom-color:rgba(255,255,255,.12)}
+.section--dark .strip:first-child{border-top-color:rgba(255,255,255,.12)}
+.section--dark .strip:hover{background:rgba(255,255,255,.04)}
+.section--dark .strip-title{color:#fff}
+.section--dark .strip-num{color:var(--red);border-right-color:rgba(255,255,255,.12)}
+.section--dark .strip-desc{color:rgba(255,255,255,.45);border-left-color:rgba(255,255,255,.12)}
+.section--dark .strip-arr{color:var(--red)}
+.section--dark .pitem{border-bottom-color:rgba(255,255,255,.1)}
+.section--dark .pitem-title{color:rgba(255,255,255,.85)}
+.section--dark .ptab{color:rgba(255,255,255,.4)}
+.section--dark .ptab.on{color:var(--red);border-color:var(--red)}
+.section--dark .press-tabs{border-bottom-color:rgba(255,255,255,.12)}
+.section--dark .cta{color:var(--red)}
 </style>
 </head>
 
@@ -566,8 +568,9 @@ input,textarea{font-family:inherit}
         <li><a href="#about"      class="nav-link" data-s="about">О нас</a></li>
         <li><a href="#leadership" class="nav-link" data-s="leadership">Руководство</a></li>
         <li><a href="#activity"   class="nav-link" data-s="activity">Деятельность</a></li>
-        <li><a href="#events"   class="nav-link" data-s="events">События</a></li>
-        <li><a href="#press"    class="nav-link" data-s="press">Пресс-центр</a></li>
+        <li><a href="#events"    class="nav-link" data-s="events">События</a></li>
+        <li><a href="#partners" class="nav-link" data-s="partners">Партнёры</a></li>
+        <li><a href="#press"     class="nav-link" data-s="press">Пресс-центр</a></li>
         <li><a href="#contact"  class="nav-link" data-s="contact">Контакты</a></li>
       </ul>
       <div class="nav-right">
@@ -589,8 +592,9 @@ input,textarea{font-family:inherit}
     <li><a href="#about"      class="nav-link">О нас</a></li>
     <li><a href="#leadership" class="nav-link">Руководство</a></li>
     <li><a href="#activity"   class="nav-link">Деятельность</a></li>
-    <li><a href="#events"   class="nav-link">События</a></li>
-    <li><a href="#press"    class="nav-link">Пресс-центр</a></li>
+    <li><a href="#events"    class="nav-link">События</a></li>
+    <li><a href="#partners" class="nav-link">Партнёры</a></li>
+    <li><a href="#press"     class="nav-link">Пресс-центр</a></li>
     <li><a href="#contact"  class="nav-link">Контакты</a></li>
   </ul>
   <div class="mnav-contact">
@@ -605,83 +609,283 @@ input,textarea{font-family:inherit}
      HERO — full viewport, photo background, animated lines
      ════════════════════════════════════════════════════════════════ -->
 <section class="hero" id="hero" aria-labelledby="hero-h">
-  <!-- World map image background with dimming overlays -->
+  <!-- Moscow Kremlin illustration — SVG background -->
   <div class="hero-bg" aria-hidden="true">
-    <!-- World map SVG background — Russia highlighted, covers full area -->
-    <svg class="hero-map-img" viewBox="0 0 1024 553" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <rect width="1024" height="553" fill="transparent"/>
-      <!-- All countries — grey -->
-      <g fill="#b8bdd4" stroke="#fff" stroke-width="0.4">
-        <!-- North America -->
-        <path d="M80,80 L170,65 L200,90 L220,70 L260,75 L270,100 L250,120 L230,140 L200,160 L180,180 L160,200 L130,220 L100,200 L80,180 L70,140 Z"/>
-        <!-- Greenland -->
-        <path d="M220,30 L280,25 L290,50 L270,70 L240,75 L220,60 Z"/>
-        <!-- Central America -->
-        <path d="M160,200 L180,180 L200,195 L195,220 L170,230 L155,215 Z"/>
-        <!-- South America -->
-        <path d="M170,230 L220,220 L250,240 L265,280 L270,330 L250,380 L220,410 L195,400 L180,370 L170,320 L160,280 L165,250 Z"/>
-        <!-- Europe -->
-        <path d="M440,80 L480,70 L510,80 L530,100 L520,120 L500,130 L480,120 L460,130 L450,120 L440,100 Z"/>
-        <!-- Scandinavia -->
-        <path d="M460,50 L490,40 L510,55 L510,80 L490,70 L470,70 Z"/>
-        <!-- UK -->
-        <path d="M430,90 L440,80 L450,90 L445,105 L432,102 Z"/>
-        <!-- Iberia -->
-        <path d="M430,130 L455,120 L465,140 L455,160 L435,158 L425,145 Z"/>
-        <!-- Italy -->
-        <path d="M480,130 L495,120 L500,140 L492,165 L480,168 L476,150 Z"/>
-        <!-- Balkans -->
-        <path d="M500,130 L525,125 L535,145 L520,165 L500,160 L495,145 Z"/>
-        <!-- Africa -->
-        <path d="M435,180 L505,180 L540,200 L555,230 L550,280 L535,330 L510,370 L480,390 L450,385 L425,360 L415,310 L415,260 L425,220 Z"/>
-        <!-- Middle East -->
-        <path d="M530,160 L570,155 L590,175 L580,205 L555,210 L535,195 Z"/>
-        <!-- Arabian Peninsula -->
-        <path d="M555,210 L580,205 L600,220 L600,250 L575,260 L555,250 Z"/>
-        <!-- Central Asia -->
-        <path d="M580,130 L640,120 L670,135 L665,165 L630,175 L595,165 Z"/>
-        <!-- South Asia -->
-        <path d="M620,175 L665,165 L695,175 L700,210 L680,240 L650,245 L625,230 L615,205 Z"/>
-        <!-- Southeast Asia -->
-        <path d="M710,200 L750,190 L770,210 L760,240 L730,250 L705,235 Z"/>
-        <!-- China+East Asia -->
-        <path d="M665,135 L750,130 L790,150 L790,190 L760,200 L720,195 L690,175 L670,160 Z"/>
-        <!-- Korean Peninsula -->
-        <path d="M790,150 L810,145 L815,165 L800,175 L788,168 Z"/>
-        <!-- Japan -->
-        <path d="M815,145 L830,140 L840,160 L830,175 L818,168 Z"/>
-        <!-- Indonesia/SE islands -->
-        <path d="M730,260 L760,255 L775,270 L760,280 L740,278 Z"/>
-        <path d="M780,265 L810,260 L820,275 L805,285 L785,280 Z"/>
-        <!-- Australia -->
-        <path d="M750,320 L820,300 L870,310 L890,340 L885,380 L860,410 L820,420 L780,410 L755,380 L745,350 Z"/>
-        <!-- New Zealand -->
-        <path d="M900,380 L915,370 L920,395 L910,410 L898,400 Z"/>
-        <!-- Madagascar -->
-        <path d="M540,335 L550,320 L558,340 L553,365 L542,368 Z"/>
-        <!-- Sub-Saharan islands / misc -->
+    <svg class="hero-moscow-svg" viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg"
+         preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <!-- Background fill -->
+      <rect width="1280" height="640" fill="#1A1A2E"/>
+
+      <!-- ── WATER / RIVER ──────────────────────────────── -->
+      <g fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round">
+        <path d="M0,565 Q100,555 200,565 Q300,575 400,565 Q500,555 600,565 Q700,575 800,565 Q900,555 1000,565 Q1100,575 1200,565 Q1240,560 1280,565"/>
+        <path d="M0,582 Q100,572 200,582 Q300,592 400,582 Q500,572 600,582 Q700,592 800,582 Q900,572 1000,582 Q1100,592 1200,582 Q1240,577 1280,582"/>
+        <path d="M0,600 Q100,590 200,600 Q300,610 400,600 Q500,590 600,600 Q700,610 800,600 Q900,590 1000,600 Q1100,610 1200,600 Q1240,595 1280,600"/>
+        <path d="M0,618 Q100,608 200,618 Q300,628 400,618 Q500,608 600,618 Q700,628 800,618 Q900,608 1000,618 Q1100,628 1200,618 Q1240,613 1280,618"/>
       </g>
-      <!-- RUSSIA — highlighted blue matching uploaded image -->
-      <g fill="#2d5fa6" stroke="#fff" stroke-width="0.5">
-        <!-- Western Russia + European Russia -->
-        <path d="M510,80 L530,75 L560,80 L590,90 L600,110 L590,130 L580,130 L560,120 L540,125 L530,110 L520,100 Z"/>
-        <!-- Core Siberia -->
-        <path d="M590,90 L680,80 L750,85 L790,95 L800,120 L790,140 L750,130 L680,120 L640,120 L600,110 Z"/>
-        <!-- Eastern Siberia -->
-        <path d="M790,95 L870,90 L910,100 L920,120 L900,135 L860,130 L820,135 L800,120 Z"/>
-        <!-- Far East -->
-        <path d="M870,90 L920,85 L940,100 L935,125 L910,130 L880,120 L870,105 Z"/>
-        <!-- Arctic / Northern Russia -->
-        <path d="M530,75 L590,65 L680,60 L790,65 L870,70 L910,80 L920,95 L870,90 L790,95 L680,80 L590,90 L530,80 Z"/>
-        <!-- Kamchatka -->
-        <path d="M920,120 L935,115 L940,140 L930,155 L918,145 Z"/>
+
+      <!-- ── LARGE RIVER BOAT (left) ───────────────────── -->
+      <g fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.4" stroke-linecap="round">
+        <path d="M95,558 L390,558 L410,540 L75,540 Z"/>
+        <rect x="130" y="508" width="210" height="32"/>
+        <rect x="170" y="482" width="130" height="26"/>
+        <rect x="200" y="464" width="75" height="18"/>
+        <line x1="150" y1="508" x2="150" y2="540"/>
+        <line x1="175" y1="508" x2="175" y2="540"/>
+        <line x1="200" y1="508" x2="200" y2="540"/>
+        <line x1="225" y1="508" x2="225" y2="540"/>
+        <line x1="250" y1="508" x2="250" y2="540"/>
+        <line x1="275" y1="508" x2="275" y2="540"/>
+        <line x1="300" y1="508" x2="300" y2="540"/>
+        <line x1="318" y1="482" x2="318" y2="508"/>
+        <line x1="298" y1="464" x2="298" y2="482"/>
+        <line x1="240" y1="440" x2="240" y2="464"/>
+        <path d="M240,440 L256,448 L240,456"/>
+        <circle cx="358" cy="549" r="7" stroke-width="1.2"/>
       </g>
-      <!-- Moscow dot -->
-      <circle cx="572" cy="105" r="5" fill="#CC2222" opacity="0.9"/>
-      <circle cx="572" cy="105" r="9" fill="none" stroke="#CC2222" stroke-width="1.5" opacity="0.5"/>
+
+      <!-- ── SMALL RIVER BOAT (right) ──────────────────── -->
+      <g fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.3" stroke-linecap="round">
+        <path d="M820,580 L1010,580 L1025,564 L808,564 Z"/>
+        <rect x="848" y="552" width="120" height="12"/>
+        <rect x="875" y="540" width="72" height="12"/>
+        <line x1="862" y1="552" x2="862" y2="564"/>
+        <line x1="882" y1="552" x2="882" y2="564"/>
+        <line x1="902" y1="552" x2="902" y2="564"/>
+        <line x1="922" y1="552" x2="922" y2="564"/>
+        <line x1="942" y1="552" x2="942" y2="564"/>
+        <circle cx="988" cy="572" r="5" stroke-width="1.2"/>
+      </g>
+
+      <!-- ── EMBANKMENT / BRIDGE ───────────────────────── -->
+      <g fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.3">
+        <line x1="340" y1="536" x2="1160" y2="525"/>
+        <line x1="340" y1="525" x2="1160" y2="514"/>
+        <line x1="340" y1="514" x2="1160" y2="503"/>
+        <line x1="480" y1="536" x2="480" y2="554"/>
+        <line x1="580" y1="534" x2="580" y2="552"/>
+        <line x1="680" y1="532" x2="680" y2="550"/>
+        <line x1="780" y1="530" x2="780" y2="548"/>
+        <line x1="880" y1="528" x2="880" y2="546"/>
+        <line x1="980" y1="527" x2="980" y2="545"/>
+        <line x1="1080" y1="526" x2="1080" y2="544"/>
+        <!-- cafe tables on embankment -->
+        <line x1="600" y1="503" x2="600" y2="514"/>
+        <line x1="596" y1="500" x2="604" y2="500"/>
+        <line x1="618" y1="502" x2="618" y2="513"/>
+        <line x1="614" y1="499" x2="622" y2="499"/>
+        <line x1="636" y1="502" x2="636" y2="513"/>
+        <line x1="632" y1="499" x2="640" y2="499"/>
+        <line x1="654" y1="501" x2="654" y2="512"/>
+        <line x1="650" y1="498" x2="658" y2="498"/>
+      </g>
+
+      <!-- ── TREES ──────────────────────────────────────── -->
+      <g fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2">
+        <!-- Row 1 (front) -->
+        <ellipse cx="390" cy="488" rx="18" ry="22"/><line x1="390" y1="510" x2="390" y2="524"/>
+        <ellipse cx="432" cy="482" rx="21" ry="26"/><line x1="432" y1="508" x2="432" y2="520"/>
+        <ellipse cx="478" cy="478" rx="19" ry="24"/><line x1="478" y1="502" x2="478" y2="516"/>
+        <ellipse cx="522" cy="475" rx="20" ry="25"/><line x1="522" y1="500" x2="522" y2="514"/>
+        <ellipse cx="566" cy="472" rx="18" ry="23"/><line x1="566" y1="495" x2="566" y2="508"/>
+        <ellipse cx="608" cy="470" rx="20" ry="24"/><line x1="608" y1="494" x2="608" y2="507"/>
+        <ellipse cx="650" cy="468" rx="19" ry="23"/><line x1="650" y1="491" x2="650" y2="505"/>
+        <ellipse cx="692" cy="466" rx="20" ry="25"/><line x1="692" y1="491" x2="692" y2="504"/>
+        <ellipse cx="735" cy="464" rx="18" ry="22"/><line x1="735" y1="486" x2="735" y2="500"/>
+        <ellipse cx="778" cy="463" rx="19" ry="23"/><line x1="778" y1="486" x2="778" y2="499"/>
+        <ellipse cx="820" cy="462" rx="17" ry="21"/><line x1="820" y1="483" x2="820" y2="498"/>
+        <ellipse cx="862" cy="461" rx="18" ry="22"/><line x1="862" y1="483" x2="862" y2="496"/>
+        <ellipse cx="904" cy="460" rx="17" ry="21"/><line x1="904" y1="481" x2="904" y2="495"/>
+        <!-- Row 2 (back, smaller) -->
+        <ellipse cx="460" cy="455" rx="14" ry="17"/><line x1="460" y1="472" x2="460" y2="483"/>
+        <ellipse cx="500" cy="450" rx="15" ry="18"/><line x1="500" y1="468" x2="500" y2="479"/>
+        <ellipse cx="542" cy="447" rx="14" ry="17"/><line x1="542" y1="464" x2="542" y2="475"/>
+        <ellipse cx="584" cy="444" rx="15" ry="18"/><line x1="584" y1="462" x2="584" y2="473"/>
+        <ellipse cx="626" cy="442" rx="14" ry="17"/><line x1="626" y1="459" x2="626" y2="470"/>
+        <ellipse cx="668" cy="440" rx="14" ry="17"/><line x1="668" y1="457" x2="668" y2="468"/>
+        <ellipse cx="710" cy="438" rx="15" ry="18"/><line x1="710" y1="456" x2="710" y2="466"/>
+        <ellipse cx="752" cy="437" rx="13" ry="16"/><line x1="752" y1="453" x2="752" y2="463"/>
+      </g>
+
+      <!-- ── KREMLIN WALL ───────────────────────────────── -->
+      <g fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.4">
+        <!-- Main wall line -->
+        <line x1="430" y1="455" x2="840" y2="440"/>
+        <line x1="430" y1="468" x2="840" y2="453"/>
+        <!-- Battlements/merlons -->
+        <path d="M445,455 L445,443 L455,443 L455,455 M462,455 L462,443 L472,443 L472,455 M479,454 L479,442 L489,442 L489,454 M496,454 L496,442 L506,442 L506,454 M513,454 L513,442 L523,442 L523,454 M530,453 L530,441 L540,441 L540,453 M547,453 L547,441 L557,441 L557,453 M564,453 L564,441 L574,441 L574,453 M581,452 L581,440 L591,440 L591,452 M598,452 L598,440 L608,440 L608,452 M615,452 L615,440 L625,440 L625,452 M632,451 L632,439 L642,439 L642,451 M649,451 L649,439 L659,439 L659,451 M666,451 L666,439 L676,439 L676,451 M683,450 L683,438 L693,438 L693,450 M700,450 L700,438 L710,438 L710,450 M717,450 L717,438 L727,438 L727,450 M734,449 L734,437 L744,437 L744,449 M751,449 L751,437 L761,437 L761,449 M768,449 L768,437 L778,437 L778,449 M785,448 L785,436 L795,436 L795,448 M802,448 L802,436 L812,436 L812,448 M819,448 L819,436 L829,436 L829,448"/>
+        <!-- Back Kremlin wall -->
+        <line x1="490" y1="430" x2="800" y2="416"/>
+        <!-- Corner tower left -->
+        <rect x="432" y="420" width="22" height="35"/>
+        <path d="M432,420 L443,406 L454,420"/>
+        <!-- Corner tower middle -->
+        <rect x="610" y="410" width="20" height="43"/>
+        <path d="M610,410 L620,396 L630,410"/>
+        <!-- Smaller back tower -->
+        <rect x="518" y="400" width="16" height="32"/>
+        <path d="M518,400 L526,389 L534,400"/>
+      </g>
+
+      <!-- ── DOME BEHIND SPASSKAYA (Assumption Cathedral) ── -->
+      <g fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.4">
+        <path d="M575,388 Q610,340 648,368 L648,420 L575,420 Z"/>
+        <line x1="612" y1="340" x2="612" y2="324"/>
+        <line x1="607" y1="320" x2="617" y2="320"/>
+        <path d="M575,388 Q578,360 590,350"/>
+        <path d="M648,368 Q645,348 635,340"/>
+      </g>
+
+      <!-- ── SPASSKAYA TOWER ────────────────────────────── -->
+      <g fill="none" stroke="rgba(255,255,255,0.92)" stroke-width="1.7" stroke-linecap="round">
+        <!-- Main body -->
+        <rect x="660" y="295" width="76" height="160"/>
+        <!-- Gate arch -->
+        <path d="M671,455 L671,422 Q698,407 725,422 L725,455"/>
+        <!-- Tier 2 -->
+        <rect x="668" y="265" width="60" height="30"/>
+        <!-- Tier 3 -->
+        <rect x="678" y="238" width="40" height="27"/>
+        <!-- Tier 4 (octagon top) -->
+        <rect x="685" y="215" width="26" height="23"/>
+        <!-- Clock face -->
+        <circle cx="698" cy="340" r="24"/>
+        <circle cx="698" cy="340" r="3"/>
+        <!-- Clock hands -->
+        <line x1="698" y1="340" x2="698" y2="320"/>
+        <line x1="698" y1="340" x2="715" y2="340"/>
+        <!-- Clock hour markers -->
+        <line x1="698" y1="317" x2="698" y2="321"/>
+        <line x1="698" y1="359" x2="698" y2="363"/>
+        <line x1="675" y1="340" x2="679" y2="340"/>
+        <line x1="717" y1="340" x2="721" y2="340"/>
+        <!-- Horizontal detail bands on tower -->
+        <line x1="660" y1="310" x2="736" y2="310"/>
+        <line x1="660" y1="360" x2="736" y2="360"/>
+        <line x1="660" y1="410" x2="736" y2="410"/>
+        <!-- Spire -->
+        <path d="M678,215 L694,160 L718,215"/>
+        <path d="M692,160 L698,118 L704,160"/>
+        <line x1="688" y1="180" x2="708" y2="180"/>
+        <line x1="685" y1="195" x2="711" y2="195"/>
+        <line x1="683" y1="207" x2="713" y2="207"/>
+        <!-- Star -->
+        <polygon points="698,108 701,117 711,117 703,123 706,132 698,126 690,132 693,123 685,117 695,117" stroke-width="1.2"/>
+      </g>
+
+      <!-- ── ST. BASIL'S CATHEDRAL ──────────────────────── -->
+      <g fill="none" stroke="rgba(255,255,255,0.88)" stroke-width="1.4" stroke-linecap="round">
+        <!-- Podium/base -->
+        <rect x="770" y="398" width="240" height="57"/>
+        <!-- Base arches -->
+        <path d="M785,398 L785,374 Q797,363 809,374 L809,398"/>
+        <path d="M822,397 L822,371 Q835,358 848,371 L848,397"/>
+        <path d="M862,396 L862,371 Q875,358 888,371 L888,396"/>
+        <path d="M902,396 L902,371 Q915,358 928,371 L928,396"/>
+        <path d="M942,395 L942,371 Q955,360 968,371 L968,395"/>
+        <path d="M980,394 L980,371 Q992,362 1004,371 L1004,394"/>
+
+        <!-- CENTRAL LARGE DOME -->
+        <rect x="858" y="305" width="64" height="68"/>
+        <!-- Onion dome shape -->
+        <path d="M858,305 Q868,252 890,232 Q912,252 922,305"/>
+        <!-- Vertical dome ribs -->
+        <line x1="866" y1="266" x2="860" y2="303"/>
+        <line x1="874" y1="248" x2="866" y2="303"/>
+        <line x1="882" y1="237" x2="874" y2="303"/>
+        <line x1="890" y1="232" x2="890" y2="303"/>
+        <line x1="898" y1="237" x2="906" y2="303"/>
+        <line x1="906" y1="248" x2="914" y2="303"/>
+        <line x1="914" y1="266" x2="920" y2="303"/>
+        <!-- Horizontal band on central dome -->
+        <path d="M862,275 Q876,268 890,265 Q904,268 918,275"/>
+        <!-- Cross -->
+        <line x1="890" y1="232" x2="890" y2="210"/>
+        <line x1="882" y1="219" x2="898" y2="219"/>
+        <line x1="884" y1="213" x2="896" y2="213"/>
+
+        <!-- LEFT-FRONT SMALL DOME -->
+        <rect x="793" y="345" width="46" height="52"/>
+        <path d="M793,345 Q800,302 816,288 Q832,302 839,345"/>
+        <line x1="800" y1="314" x2="794" y2="343"/>
+        <line x1="808" y1="298" x2="800" y2="343"/>
+        <line x1="816" y1="289" x2="816" y2="343"/>
+        <line x1="824" y1="298" x2="832" y2="343"/>
+        <line x1="832" y1="314" x2="838" y2="343"/>
+        <path d="M797,322 Q808,316 816,313 Q824,316 835,322"/>
+        <line x1="816" y1="288" x2="816" y2="274"/>
+        <line x1="810" y1="280" x2="822" y2="280"/>
+
+        <!-- RIGHT-FRONT SMALL DOME -->
+        <rect x="940" y="345" width="46" height="50"/>
+        <path d="M940,345 Q947,302 963,288 Q979,302 986,345"/>
+        <line x1="947" y1="314" x2="941" y2="343"/>
+        <line x1="955" y1="298" x2="947" y2="343"/>
+        <line x1="963" y1="289" x2="963" y2="343"/>
+        <line x1="971" y1="298" x2="979" y2="343"/>
+        <line x1="979" y1="314" x2="985" y2="343"/>
+        <path d="M944,322 Q955,316 963,313 Q971,316 982,322"/>
+        <line x1="963" y1="288" x2="963" y2="274"/>
+        <line x1="957" y1="280" x2="969" y2="280"/>
+
+        <!-- BACK LEFT DOME -->
+        <rect x="773" y="320" width="38" height="42"/>
+        <path d="M773,320 Q779,284 792,270 Q805,284 811,320"/>
+        <line x1="792" y1="270" x2="792" y2="256"/>
+        <line x1="786" y1="262" x2="798" y2="262"/>
+        <line x1="785" y1="295" x2="791" y2="318"/>
+        <line x1="799" y1="295" x2="805" y2="318"/>
+
+        <!-- BACK RIGHT DOME -->
+        <rect x="1000" y="316" width="40" height="44"/>
+        <path d="M1000,316 Q1006,278 1020,264 Q1034,278 1040,316"/>
+        <line x1="1020" y1="264" x2="1020" y2="250"/>
+        <line x1="1014" y1="256" x2="1026" y2="256"/>
+        <line x1="1007" y1="290" x2="1003" y2="314"/>
+        <line x1="1033" y1="290" x2="1037" y2="314"/>
+
+        <!-- FAR RIGHT DOME -->
+        <rect x="1046" y="328" width="34" height="40"/>
+        <path d="M1046,328 Q1051,294 1063,281 Q1075,294 1080,328"/>
+        <line x1="1063" y1="281" x2="1063" y2="268"/>
+        <line x1="1057" y1="274" x2="1069" y2="274"/>
+
+        <!-- BACK CENTER-LEFT DOME -->
+        <rect x="828" y="308" width="34" height="38"/>
+        <path d="M828,308 Q833,274 845,260 Q857,274 862,308"/>
+        <line x1="845" y1="260" x2="845" y2="246"/>
+        <line x1="839" y1="252" x2="851" y2="252"/>
+
+        <!-- BACK CENTER-RIGHT DOME -->
+        <rect x="922" y="308" width="34" height="38"/>
+        <path d="M922,308 Q927,274 939,260 Q951,274 956,308"/>
+        <line x1="939" y1="260" x2="939" y2="246"/>
+        <line x1="933" y1="252" x2="945" y2="252"/>
+      </g>
+
+      <!-- ── LAMP POSTS ─────────────────────────────────── -->
+      <g fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1">
+        <line x1="370" y1="484" x2="370" y2="530"/>
+        <path d="M370,484 Q380,476 392,481"/>
+        <circle cx="393" cy="481" r="3"/>
+        <line x1="530" y1="472" x2="530" y2="514"/>
+        <path d="M530,472 Q540,464 552,469"/>
+        <circle cx="553" cy="469" r="3"/>
+        <line x1="920" y1="455" x2="920" y2="500"/>
+        <path d="M920,455 Q930,447 942,452"/>
+        <circle cx="943" cy="452" r="3"/>
+      </g>
+
+      <!-- ── LEFT FADE GRADIENT (for text readability) ──── -->
+      <defs>
+        <linearGradient id="leftFade" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1A1A2E" stop-opacity="1"/>
+          <stop offset="45%" stop-color="#1A1A2E" stop-opacity="0.7"/>
+          <stop offset="70%" stop-color="#1A1A2E" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="1280" height="640" fill="url(#leftFade)"/>
     </svg>
-    <div class="hero-overlay"></div>
-    <div class="hero-overlay-grad"></div>
   </div>
 
   <div class="hero-grid" aria-hidden="true"></div>
@@ -721,8 +925,7 @@ input,textarea{font-family:inherit}
   <div class="wrap" style="position:relative;z-index:1">
     <p class="slabel rv">О нас</p>
 
-    <div class="about-grid">
-      <div>
+    <div>
         <div class="about-mission rv d2">
           <p>Государственное Унитарное Предприятие «Московский Центр Международного Сотрудничества» — подведомственная организация Департамента внешнеэкономических и международных связей города Москвы. ГУП «МЦМС» осуществляет поддержку и сопровождение внешнеэкономической деятельности государственных, деловых структур и предприятий города Москвы, их деловому взаимодействию с зарубежными партнерами, что развивает укрепление долгосрочного и взаимовыгодного сотрудничества города Москвы с государствами мира. Департамент внешнеэкономических и международных связей города Москвы осуществляет координацию, регулирование и научно-методическое обеспечение деятельности Центра.</p>
           <p>Миссия ГУП «МЦМС» — содействие укреплению долгосрочного и взаимовыгодного сотрудничества Москвы с государствами мира. Центр играет ключевую роль в разработке и реализации внешнеполитических приоритетов столицы, продвижении её социально-экономических, индустриальных и промышленных, инвестиционных, научных и культурных интересов на мировой арене.</p>
@@ -733,9 +936,6 @@ input,textarea{font-family:inherit}
           alt="Международный форум с участием делегации Правительства Москвы"
           loading="lazy" decoding="async"
           onerror="this.style.display='none'">
-      </div>
-
-      <div class="rv d3">
         <p class="about-aside-title">Цели центра</p>
         <ul class="goal-list" role="list">
           <li class="goal-item">Поддержка и сопровождение внешнеэкономической деятельности и делового взаимодействия с зарубежными партнерами.</li>
@@ -748,7 +948,6 @@ input,textarea{font-family:inherit}
           <li class="goal-item">Привлечение иностранных инвестиций для перспективных проектов</li>
         </ul>
 
-      </div>
     </div>
   </div>
 </section>
@@ -756,7 +955,7 @@ input,textarea{font-family:inherit}
 <!-- ════════════════════════════════════════════════════════════════
      LEADERSHIP — отдельный раздел
      ════════════════════════════════════════════════════════════════ -->
-<section class="section section--white" id="leadership" aria-labelledby="leadership-h">
+<section class="section section--dark" id="leadership" aria-labelledby="leadership-h">
   <div class="wrap">
     <p class="slabel rv">Руководство</p>
     <h2 class="stitle rv d1" id="leadership-h">Руководство центра</h2>
@@ -775,8 +974,56 @@ input,textarea{font-family:inherit}
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════
-     NUMBERS
+     ACTIVITY — horizontal strips with animated vertical line
      ════════════════════════════════════════════════════════════════ -->
+<section class="section section--white" id="activity" aria-labelledby="activity-h">
+  <div class="wrap">
+    <div class="activity-header">
+      <p class="slabel rv">Деятельность</p>
+      <h2 class="stitle rv d1" id="activity-h">Направления работы</h2>
+    </div>
+
+    <div class="strips lt" style="position:relative">
+      <!-- Vertical red line tracing down through all strips -->
+      <svg class="lc" viewBox="0 0 1240 500" preserveAspectRatio="none" aria-hidden="true" style="z-index:0">
+        <line class="tl" x1="59" y1="0" x2="59" y2="500"
+          style="stroke:var(--red);stroke-dasharray:500;stroke-dashoffset:500;transition-delay:.15s;stroke-width:2"/>
+      </svg>
+
+      <div class="strip rv d1">
+        <div class="strip-num">01</div>
+        <div class="strip-title">Оперативная поддержка и сопровождение</div>
+        <div class="strip-desc">Поддержка и сопровождение внешнеэкономической деятельности и деловому взаимодействию с зарубежными партнерами</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+      <div class="strip rv d2">
+        <div class="strip-num">02</div>
+        <div class="strip-title">Конгрессно-выставочная деятельность</div>
+        <div class="strip-desc">Организация международных конгрессов, конференций, симпозиумов и деловых форумов в России и за рубежом на высоком уровне</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+      <div class="strip rv d3">
+        <div class="strip-num">03</div>
+        <div class="strip-title">Поддержка соотечественников за рубежом</div>
+        <div class="strip-desc">Участие в реализации Государственной программы города Москвы по работе с соотечественниками</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+      <div class="strip rv d4">
+        <div class="strip-num">04</div>
+        <div class="strip-title">Медицинские стажировки за рубежом</div>
+        <div class="strip-desc">Реализация Государственной программы города Москвы «Столичное здравоохранение» — зарубежные стажировки медработников</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+      <div class="strip rv d5">
+        <div class="strip-num">05</div>
+        <div class="strip-title">Визовые и консульские услуги</div>
+        <div class="strip-desc">Комплексное паспортно-визовое обслуживание, консультации и оформление документов для международных поездок</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section section--dark" id="numbers" aria-labelledby="numbers-h">
   <div class="wrap">
     <p class="slabel rv">Центр в цифрах</p>
@@ -796,11 +1043,11 @@ input,textarea{font-family:inherit}
 <!-- ════════════════════════════════════════════════════════════════
      EVENTS
      ════════════════════════════════════════════════════════════════ -->
-<section class="section events" id="events" aria-labelledby="events-h">
+<section class="section section--dark events" id="events" aria-labelledby="events-h">
   <div class="wrap">
     <div class="events-header">
       <div>
-        <p class="slabel rv">Ключевые события</p>
+        <p class="slabel rv">События</p>
         <h2 class="stitle rv d1" id="events-h">Последние события</h2>
       </div>
       <a href="https://ano-mcms.ru/activity/" class="cta rv d2" target="_blank" rel="noopener">Все события</a>
@@ -916,102 +1163,45 @@ input,textarea{font-family:inherit}
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════
-     ACTIVITY — horizontal strips with animated vertical line
+     PARTNERS — отдельный раздел
      ════════════════════════════════════════════════════════════════ -->
-<section class="section section--white" id="activity" aria-labelledby="activity-h">
+<section class="section section--white" id="partners" aria-labelledby="partners-h">
   <div class="wrap">
-    <div class="activity-header">
-      <p class="slabel rv">Деятельность</p>
-      <h2 class="stitle rv d1" id="activity-h">Направления работы</h2>
-    </div>
-
-    <div class="strips lt" style="position:relative">
-      <!-- Vertical red line tracing down through all strips -->
-      <svg class="lc" viewBox="0 0 1240 500" preserveAspectRatio="none" aria-hidden="true" style="z-index:0">
-        <line class="tl" x1="59" y1="0" x2="59" y2="500"
-          style="stroke:var(--red);stroke-dasharray:500;stroke-dashoffset:500;transition-delay:.15s;stroke-width:2"/>
-      </svg>
-
-      <div class="strip rv d1">
-        <div class="strip-num">01</div>
-        <div class="strip-title">Оперативная поддержка и сопровождение</div>
-        <div class="strip-desc">Поддержка и сопровождение внешнеэкономической деятельности и деловому взаимодействию с зарубежными партнерами</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-      <div class="strip rv d2">
-        <div class="strip-num">02</div>
-        <div class="strip-title">Конгрессно-выставочная деятельность</div>
-        <div class="strip-desc">Организация международных конгрессов, конференций, симпозиумов и деловых форумов в России и за рубежом на высоком уровне</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-      <div class="strip rv d3">
-        <div class="strip-num">03</div>
-        <div class="strip-title">Поддержка соотечественников за рубежом</div>
-        <div class="strip-desc">Участие в реализации Государственной программы города Москвы по работе с соотечественниками</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-      <div class="strip rv d4">
-        <div class="strip-num">04</div>
-        <div class="strip-title">Медицинские стажировки за рубежом</div>
-        <div class="strip-desc">Реализация Государственной программы города Москвы «Столичное здравоохранение» — зарубежные стажировки медработников</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-      <div class="strip rv d5">
-        <div class="strip-num">05</div>
-        <div class="strip-title">Визовые и консульские услуги</div>
-        <div class="strip-desc">Комплексное паспортно-визовое обслуживание, консультации и оформление документов для международных поездок</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════════
-     PROJECTS — photo gallery
-     ════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark projects" id="projects" aria-labelledby="projects-h">
-  <div class="wrap">
-    <div class="projects-header">
-      <div>
-        <p class="slabel rv">Реализованные проекты</p>
-        <h2 class="stitle rv d1" id="projects-h">Избранные мероприятия</h2>
-      </div>
-      <a href="https://ano-mcms.ru/activity/" class="cta rv d2" target="_blank" rel="noopener" style="color:var(--red)">Все проекты</a>
-    </div>
-
-    <div class="projects-grid lt rv d2">
-      <div class="project-item">
-        <img src="https://ano-mcms.ru/wp-content/uploads/2023/07/foto1.jpg"
-          alt="X Азиатско-Тихоокеанский форум по устойчивому развитию 2023"
-          loading="lazy" decoding="async"
-          onerror="this.style.background='#2a2a3e';this.style.height='200px'">
-        <div class="project-overlay"></div>
-        <p class="project-label">X Азиатско-Тихоокеанский форум 2023</p>
-      </div>
-      <div class="project-item">
-        <img src="https://ano-mcms.ru/wp-content/uploads/2023/07/Rossijsko-indijskij-delovoj-forum-2023_2.jpg"
-          alt="Российско-индийский деловой форум 2023"
-          loading="lazy" decoding="async"
-          onerror="this.style.background='#2a2a3e';this.style.height='200px'">
-        <div class="project-overlay"></div>
-        <p class="project-label">Российско-индийский деловой форум 2023</p>
-      </div>
-      <div class="project-item">
-        <img src="https://ano-mcms.ru/wp-content/uploads/2023/07/Biznes-missiya-v-Manilu-2023_2.jpg"
-          alt="Бизнес-миссия в Манилу 2023"
-          loading="lazy" decoding="async"
-          onerror="this.style.background='#2a2a3e';this.style.height='200px'">
-        <div class="project-overlay"></div>
-        <p class="project-label">Бизнес-миссия в Манилу 2023</p>
-      </div>
-      <div class="project-item">
-        <img src="https://ano-mcms.ru/wp-content/uploads/2023/07/Annual-Invest-Meeting-Abu-Dabi-2023_2.jpg"
-          alt="Ежегодный инвестиционный форум Абу-Даби 2023"
-          loading="lazy" decoding="async"
-          onerror="this.style.background='#2a2a3e';this.style.height='200px'">
-        <div class="project-overlay"></div>
-        <p class="project-label">Инвестиционный форум Абу-Даби 2023</p>
-      </div>
+    <p class="slabel rv">Партнёры</p>
+    <h2 class="stitle rv d1" id="partners-h">Партнёры центра</h2>
+    <div class="partners-grid rv d2">
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Россотрудничество</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Московская торгово-промышленная палата</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Деловая Россия — Индия</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">МИД Российской Федерации</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Московский дом соотечественника</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Дом Латинской Америки</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Росконгресс</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Дом русского зарубежья</span>
+          </div>
     </div>
   </div>
 </section>
@@ -1019,7 +1209,7 @@ input,textarea{font-family:inherit}
 <!-- ════════════════════════════════════════════════════════════════
      PRESS
      ════════════════════════════════════════════════════════════════ -->
-<section class="section press" id="press" aria-labelledby="press-h">
+<section class="section section--dark press" id="press" aria-labelledby="press-h">
   <!-- Background diagonal lines -->
   <div class="press-lines lt" aria-hidden="true">
     <svg class="lc" viewBox="0 0 1240 800" preserveAspectRatio="xMidYMid meet">
@@ -1034,7 +1224,7 @@ input,textarea{font-family:inherit}
     <div class="press-header">
       <div>
         <p class="slabel rv">Пресс-центр</p>
-        <h2 class="stitle rv d1" id="press-h">Новости и события</h2>
+        <h2 class="stitle rv d1" id="press-h">Новости и пресс-релизы</h2>
       </div>
       <a href="https://ano-mcms.ru/press-center/" class="cta rv d2" target="_blank" rel="noopener">Все публикации</a>
     </div>
@@ -1069,31 +1259,6 @@ input,textarea{font-family:inherit}
         <li class="pitem"><span class="pitem-date">05.12.2024</span><span class="pitem-title">XV Индийско-Российский бизнес-диалог состоится в Москве</span><span class="pitem-arrow" aria-hidden="true">→</span></li>
         <li class="pitem"><span class="pitem-date">21.10.2024</span><span class="pitem-title">В Ташкенте пройдут Дни Москвы</span><span class="pitem-arrow" aria-hidden="true">→</span></li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Partners marquee — бегущая строка -->
-<section class="partners" aria-label="Партнёры центра — бегущая строка">
-  <p class="partners-label">Партнёры центра</p>
-  <div class="marquee-wrap">
-    <div class="marquee-track" aria-hidden="true">
-      <span class="partner">Россотрудничество</span>
-      <span class="partner">Московская торгово-промышленная палата</span>
-      <span class="partner">Деловая Россия — Индия</span>
-      <span class="partner">МИД Российской Федерации</span>
-      <span class="partner">Московский дом соотечественника</span>
-      <span class="partner">Дом Латинской Америки</span>
-      <span class="partner">Росконгресс</span>
-      <span class="partner">Дом русского зарубежья</span>
-      <span class="partner">Россотрудничество</span>
-      <span class="partner">Московская торгово-промышленная палата</span>
-      <span class="partner">Деловая Россия — Индия</span>
-      <span class="partner">МИД Российской Федерации</span>
-      <span class="partner">Московский дом соотечественника</span>
-      <span class="partner">Дом Латинской Америки</span>
-      <span class="partner">Росконгресс</span>
-      <span class="partner">Дом русского зарубежья</span>
     </div>
   </div>
 </section>
@@ -1180,7 +1345,7 @@ input,textarea{font-family:inherit}
         <!-- Яндекс.Карта — ул. Бауманская, д. 68/8, стр. 1 -->
         <div style="margin-top:24px;border:1.5px solid var(--rule);overflow:hidden;height:320px">
           <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=37.680600%2C55.769700&z=15&pt=37.680600%2C55.769700,pm2rdl~%D1%83%D0%BB.+%D0%91%D0%B0%D1%83%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+68%2F8&l=map"
+            src="https://yandex.ru/map-widget/v1/?ll=37.681400%2C55.769300&z=16&pt=37.681400%2C55.769300,pm2rdl~%D0%91%D0%B0%D1%83%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+68%2F8+%D1%81%D1%82%D1%80.+1&l=map"
             width="100%"
             height="320"
             frameborder="0"
