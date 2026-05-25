@@ -275,7 +275,7 @@ input,textarea{font-family:inherit}
 .hero-scroll-line::after{content:'';position:absolute;top:-100%;left:0;width:1px;height:100%;background:#fff;animation:scrollpulse 1.8s ease-in-out infinite}
 @keyframes scrollpulse{0%{top:-100%}100%{top:200%}}
 .hero-scroll-text{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
-.hero-h1-emblem{height:1.33em;width:auto;vertical-align:middle;display:inline-block;margin-right:0}
+.hero-h1-emblem{height:1.33em;width:auto;vertical-align:middle;display:inline-block;margin-right:0;position:relative;top:-0.2em}
 
 /* ════════════════════════════════════════════════════════════════
    ABOUT
@@ -547,6 +547,33 @@ input,textarea{font-family:inherit}
   .tl{transition:none;stroke-dashoffset:0}
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important}
 }
+
+/* ── PARTNERS GRID ────────────────────────────────────────────── */
+.partners-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.partner-card{display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px 24px;border:1.5px solid var(--rule);transition:border-color .2s,box-shadow .2s}
+.partner-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.partner-logo-placeholder{width:120px;height:60px;background:var(--ink-08);border:1.5px dashed var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.partner-name{font-size:13px;font-weight:700;color:var(--ink);text-align:center;line-height:1.4}
+@media(max-width:480px){.partners-grid{grid-template-columns:1fr}}
+
+/* ── DARK SECTION TEXT OVERRIDES ─────────────────────────────── */
+.section--dark .goal-item{color:rgba(255,255,255,.7);border-bottom-color:rgba(255,255,255,.12)}
+.section--dark .goal-item::before{background:var(--red)}
+.section--dark .about-aside-title{color:var(--red);border-bottom-color:rgba(255,255,255,.12)}
+.section--dark .about-mission{color:rgba(255,255,255,.85)}
+.section--dark .strip{border-bottom-color:rgba(255,255,255,.12)}
+.section--dark .strip:first-child{border-top-color:rgba(255,255,255,.12)}
+.section--dark .strip:hover{background:rgba(255,255,255,.04)}
+.section--dark .strip-title{color:#fff}
+.section--dark .strip-num{color:var(--red);border-right-color:rgba(255,255,255,.12)}
+.section--dark .strip-desc{color:rgba(255,255,255,.45);border-left-color:rgba(255,255,255,.12)}
+.section--dark .strip-arr{color:var(--red)}
+.section--dark .pitem{border-bottom-color:rgba(255,255,255,.1)}
+.section--dark .pitem-title{color:rgba(255,255,255,.85)}
+.section--dark .ptab{color:rgba(255,255,255,.4)}
+.section--dark .ptab.on{color:var(--red);border-color:var(--red)}
+.section--dark .press-tabs{border-bottom-color:rgba(255,255,255,.12)}
+.section--dark .cta{color:var(--red)}
 </style>
 </head>
 
@@ -566,8 +593,9 @@ input,textarea{font-family:inherit}
         <li><a href="#about"      class="nav-link" data-s="about">О нас</a></li>
         <li><a href="#leadership" class="nav-link" data-s="leadership">Руководство</a></li>
         <li><a href="#activity"   class="nav-link" data-s="activity">Деятельность</a></li>
-        <li><a href="#events"   class="nav-link" data-s="events">События</a></li>
-        <li><a href="#press"    class="nav-link" data-s="press">Пресс-центр</a></li>
+        <li><a href="#events"    class="nav-link" data-s="events">События</a></li>
+        <li><a href="#partners" class="nav-link" data-s="partners">Партнёры</a></li>
+        <li><a href="#press"     class="nav-link" data-s="press">Пресс-центр</a></li>
         <li><a href="#contact"  class="nav-link" data-s="contact">Контакты</a></li>
       </ul>
       <div class="nav-right">
@@ -589,8 +617,9 @@ input,textarea{font-family:inherit}
     <li><a href="#about"      class="nav-link">О нас</a></li>
     <li><a href="#leadership" class="nav-link">Руководство</a></li>
     <li><a href="#activity"   class="nav-link">Деятельность</a></li>
-    <li><a href="#events"   class="nav-link">События</a></li>
-    <li><a href="#press"    class="nav-link">Пресс-центр</a></li>
+    <li><a href="#events"    class="nav-link">События</a></li>
+    <li><a href="#partners" class="nav-link">Партнёры</a></li>
+    <li><a href="#press"     class="nav-link">Пресс-центр</a></li>
     <li><a href="#contact"  class="nav-link">Контакты</a></li>
   </ul>
   <div class="mnav-contact">
@@ -721,8 +750,7 @@ input,textarea{font-family:inherit}
   <div class="wrap" style="position:relative;z-index:1">
     <p class="slabel rv">О нас</p>
 
-    <div class="about-grid">
-      <div>
+    <div>
         <div class="about-mission rv d2">
           <p>Государственное Унитарное Предприятие «Московский Центр Международного Сотрудничества» — подведомственная организация Департамента внешнеэкономических и международных связей города Москвы. ГУП «МЦМС» осуществляет поддержку и сопровождение внешнеэкономической деятельности государственных, деловых структур и предприятий города Москвы, их деловому взаимодействию с зарубежными партнерами, что развивает укрепление долгосрочного и взаимовыгодного сотрудничества города Москвы с государствами мира. Департамент внешнеэкономических и международных связей города Москвы осуществляет координацию, регулирование и научно-методическое обеспечение деятельности Центра.</p>
           <p>Миссия ГУП «МЦМС» — содействие укреплению долгосрочного и взаимовыгодного сотрудничества Москвы с государствами мира. Центр играет ключевую роль в разработке и реализации внешнеполитических приоритетов столицы, продвижении её социально-экономических, индустриальных и промышленных, инвестиционных, научных и культурных интересов на мировой арене.</p>
@@ -733,9 +761,6 @@ input,textarea{font-family:inherit}
           alt="Международный форум с участием делегации Правительства Москвы"
           loading="lazy" decoding="async"
           onerror="this.style.display='none'">
-      </div>
-
-      <div class="rv d3">
         <p class="about-aside-title">Цели центра</p>
         <ul class="goal-list" role="list">
           <li class="goal-item">Поддержка и сопровождение внешнеэкономической деятельности и делового взаимодействия с зарубежными партнерами.</li>
@@ -748,7 +773,6 @@ input,textarea{font-family:inherit}
           <li class="goal-item">Привлечение иностранных инвестиций для перспективных проектов</li>
         </ul>
 
-      </div>
     </div>
   </div>
 </section>
@@ -756,7 +780,7 @@ input,textarea{font-family:inherit}
 <!-- ════════════════════════════════════════════════════════════════
      LEADERSHIP — отдельный раздел
      ════════════════════════════════════════════════════════════════ -->
-<section class="section section--white" id="leadership" aria-labelledby="leadership-h">
+<section class="section section--dark" id="leadership" aria-labelledby="leadership-h">
   <div class="wrap">
     <p class="slabel rv">Руководство</p>
     <h2 class="stitle rv d1" id="leadership-h">Руководство центра</h2>
@@ -775,8 +799,56 @@ input,textarea{font-family:inherit}
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════
-     NUMBERS
+     ACTIVITY — horizontal strips with animated vertical line
      ════════════════════════════════════════════════════════════════ -->
+<section class="section section--white" id="activity" aria-labelledby="activity-h">
+  <div class="wrap">
+    <div class="activity-header">
+      <p class="slabel rv">Деятельность</p>
+      <h2 class="stitle rv d1" id="activity-h">Направления работы</h2>
+    </div>
+
+    <div class="strips lt" style="position:relative">
+      <!-- Vertical red line tracing down through all strips -->
+      <svg class="lc" viewBox="0 0 1240 500" preserveAspectRatio="none" aria-hidden="true" style="z-index:0">
+        <line class="tl" x1="59" y1="0" x2="59" y2="500"
+          style="stroke:var(--red);stroke-dasharray:500;stroke-dashoffset:500;transition-delay:.15s;stroke-width:2"/>
+      </svg>
+
+      <div class="strip rv d1">
+        <div class="strip-num">01</div>
+        <div class="strip-title">Оперативная поддержка и сопровождение</div>
+        <div class="strip-desc">Поддержка и сопровождение внешнеэкономической деятельности и деловому взаимодействию с зарубежными партнерами</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+      <div class="strip rv d2">
+        <div class="strip-num">02</div>
+        <div class="strip-title">Конгрессно-выставочная деятельность</div>
+        <div class="strip-desc">Организация международных конгрессов, конференций, симпозиумов и деловых форумов в России и за рубежом на высоком уровне</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+      <div class="strip rv d3">
+        <div class="strip-num">03</div>
+        <div class="strip-title">Поддержка соотечественников за рубежом</div>
+        <div class="strip-desc">Участие в реализации Государственной программы города Москвы по работе с соотечественниками</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+      <div class="strip rv d4">
+        <div class="strip-num">04</div>
+        <div class="strip-title">Медицинские стажировки за рубежом</div>
+        <div class="strip-desc">Реализация Государственной программы города Москвы «Столичное здравоохранение» — зарубежные стажировки медработников</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+      <div class="strip rv d5">
+        <div class="strip-num">05</div>
+        <div class="strip-title">Визовые и консульские услуги</div>
+        <div class="strip-desc">Комплексное паспортно-визовое обслуживание, консультации и оформление документов для международных поездок</div>
+        <div class="strip-arr" aria-hidden="true">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section section--dark" id="numbers" aria-labelledby="numbers-h">
   <div class="wrap">
     <p class="slabel rv">Центр в цифрах</p>
@@ -796,11 +868,11 @@ input,textarea{font-family:inherit}
 <!-- ════════════════════════════════════════════════════════════════
      EVENTS
      ════════════════════════════════════════════════════════════════ -->
-<section class="section events" id="events" aria-labelledby="events-h">
+<section class="section section--dark events" id="events" aria-labelledby="events-h">
   <div class="wrap">
     <div class="events-header">
       <div>
-        <p class="slabel rv">Ключевые события</p>
+        <p class="slabel rv">События</p>
         <h2 class="stitle rv d1" id="events-h">Последние события</h2>
       </div>
       <a href="https://ano-mcms.ru/activity/" class="cta rv d2" target="_blank" rel="noopener">Все события</a>
@@ -916,102 +988,45 @@ input,textarea{font-family:inherit}
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════
-     ACTIVITY — horizontal strips with animated vertical line
+     PARTNERS — отдельный раздел
      ════════════════════════════════════════════════════════════════ -->
-<section class="section section--white" id="activity" aria-labelledby="activity-h">
+<section class="section section--white" id="partners" aria-labelledby="partners-h">
   <div class="wrap">
-    <div class="activity-header">
-      <p class="slabel rv">Деятельность</p>
-      <h2 class="stitle rv d1" id="activity-h">Направления работы</h2>
-    </div>
-
-    <div class="strips lt" style="position:relative">
-      <!-- Vertical red line tracing down through all strips -->
-      <svg class="lc" viewBox="0 0 1240 500" preserveAspectRatio="none" aria-hidden="true" style="z-index:0">
-        <line class="tl" x1="59" y1="0" x2="59" y2="500"
-          style="stroke:var(--red);stroke-dasharray:500;stroke-dashoffset:500;transition-delay:.15s;stroke-width:2"/>
-      </svg>
-
-      <div class="strip rv d1">
-        <div class="strip-num">01</div>
-        <div class="strip-title">Оперативная поддержка и сопровождение</div>
-        <div class="strip-desc">Поддержка и сопровождение внешнеэкономической деятельности и деловому взаимодействию с зарубежными партнерами</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-      <div class="strip rv d2">
-        <div class="strip-num">02</div>
-        <div class="strip-title">Конгрессно-выставочная деятельность</div>
-        <div class="strip-desc">Организация международных конгрессов, конференций, симпозиумов и деловых форумов в России и за рубежом на высоком уровне</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-      <div class="strip rv d3">
-        <div class="strip-num">03</div>
-        <div class="strip-title">Поддержка соотечественников за рубежом</div>
-        <div class="strip-desc">Участие в реализации Государственной программы города Москвы по работе с соотечественниками</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-      <div class="strip rv d4">
-        <div class="strip-num">04</div>
-        <div class="strip-title">Медицинские стажировки за рубежом</div>
-        <div class="strip-desc">Реализация Государственной программы города Москвы «Столичное здравоохранение» — зарубежные стажировки медработников</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-      <div class="strip rv d5">
-        <div class="strip-num">05</div>
-        <div class="strip-title">Визовые и консульские услуги</div>
-        <div class="strip-desc">Комплексное паспортно-визовое обслуживание, консультации и оформление документов для международных поездок</div>
-        <div class="strip-arr" aria-hidden="true">→</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════════
-     PROJECTS — photo gallery
-     ════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark projects" id="projects" aria-labelledby="projects-h">
-  <div class="wrap">
-    <div class="projects-header">
-      <div>
-        <p class="slabel rv">Реализованные проекты</p>
-        <h2 class="stitle rv d1" id="projects-h">Избранные мероприятия</h2>
-      </div>
-      <a href="https://ano-mcms.ru/activity/" class="cta rv d2" target="_blank" rel="noopener" style="color:var(--red)">Все проекты</a>
-    </div>
-
-    <div class="projects-grid lt rv d2">
-      <div class="project-item">
-        <img src="https://ano-mcms.ru/wp-content/uploads/2023/07/foto1.jpg"
-          alt="X Азиатско-Тихоокеанский форум по устойчивому развитию 2023"
-          loading="lazy" decoding="async"
-          onerror="this.style.background='#2a2a3e';this.style.height='200px'">
-        <div class="project-overlay"></div>
-        <p class="project-label">X Азиатско-Тихоокеанский форум 2023</p>
-      </div>
-      <div class="project-item">
-        <img src="https://ano-mcms.ru/wp-content/uploads/2023/07/Rossijsko-indijskij-delovoj-forum-2023_2.jpg"
-          alt="Российско-индийский деловой форум 2023"
-          loading="lazy" decoding="async"
-          onerror="this.style.background='#2a2a3e';this.style.height='200px'">
-        <div class="project-overlay"></div>
-        <p class="project-label">Российско-индийский деловой форум 2023</p>
-      </div>
-      <div class="project-item">
-        <img src="https://ano-mcms.ru/wp-content/uploads/2023/07/Biznes-missiya-v-Manilu-2023_2.jpg"
-          alt="Бизнес-миссия в Манилу 2023"
-          loading="lazy" decoding="async"
-          onerror="this.style.background='#2a2a3e';this.style.height='200px'">
-        <div class="project-overlay"></div>
-        <p class="project-label">Бизнес-миссия в Манилу 2023</p>
-      </div>
-      <div class="project-item">
-        <img src="https://ano-mcms.ru/wp-content/uploads/2023/07/Annual-Invest-Meeting-Abu-Dabi-2023_2.jpg"
-          alt="Ежегодный инвестиционный форум Абу-Даби 2023"
-          loading="lazy" decoding="async"
-          onerror="this.style.background='#2a2a3e';this.style.height='200px'">
-        <div class="project-overlay"></div>
-        <p class="project-label">Инвестиционный форум Абу-Даби 2023</p>
-      </div>
+    <p class="slabel rv">Партнёры</p>
+    <h2 class="stitle rv d1" id="partners-h">Партнёры центра</h2>
+    <div class="partners-grid rv d2">
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Россотрудничество</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Московская торгово-промышленная палата</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Деловая Россия — Индия</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">МИД Российской Федерации</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Московский дом соотечественника</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Дом Латинской Америки</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Росконгресс</span>
+          </div>
+          <div class="partner-card rv">
+            <div class="partner-logo-placeholder" aria-label="Логотип партнёра"></div>
+            <span class="partner-name">Дом русского зарубежья</span>
+          </div>
     </div>
   </div>
 </section>
@@ -1019,7 +1034,7 @@ input,textarea{font-family:inherit}
 <!-- ════════════════════════════════════════════════════════════════
      PRESS
      ════════════════════════════════════════════════════════════════ -->
-<section class="section press" id="press" aria-labelledby="press-h">
+<section class="section section--dark press" id="press" aria-labelledby="press-h">
   <!-- Background diagonal lines -->
   <div class="press-lines lt" aria-hidden="true">
     <svg class="lc" viewBox="0 0 1240 800" preserveAspectRatio="xMidYMid meet">
@@ -1034,7 +1049,7 @@ input,textarea{font-family:inherit}
     <div class="press-header">
       <div>
         <p class="slabel rv">Пресс-центр</p>
-        <h2 class="stitle rv d1" id="press-h">Новости и события</h2>
+        <h2 class="stitle rv d1" id="press-h">Новости и пресс-релизы</h2>
       </div>
       <a href="https://ano-mcms.ru/press-center/" class="cta rv d2" target="_blank" rel="noopener">Все публикации</a>
     </div>
@@ -1069,31 +1084,6 @@ input,textarea{font-family:inherit}
         <li class="pitem"><span class="pitem-date">05.12.2024</span><span class="pitem-title">XV Индийско-Российский бизнес-диалог состоится в Москве</span><span class="pitem-arrow" aria-hidden="true">→</span></li>
         <li class="pitem"><span class="pitem-date">21.10.2024</span><span class="pitem-title">В Ташкенте пройдут Дни Москвы</span><span class="pitem-arrow" aria-hidden="true">→</span></li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Partners marquee — бегущая строка -->
-<section class="partners" aria-label="Партнёры центра — бегущая строка">
-  <p class="partners-label">Партнёры центра</p>
-  <div class="marquee-wrap">
-    <div class="marquee-track" aria-hidden="true">
-      <span class="partner">Россотрудничество</span>
-      <span class="partner">Московская торгово-промышленная палата</span>
-      <span class="partner">Деловая Россия — Индия</span>
-      <span class="partner">МИД Российской Федерации</span>
-      <span class="partner">Московский дом соотечественника</span>
-      <span class="partner">Дом Латинской Америки</span>
-      <span class="partner">Росконгресс</span>
-      <span class="partner">Дом русского зарубежья</span>
-      <span class="partner">Россотрудничество</span>
-      <span class="partner">Московская торгово-промышленная палата</span>
-      <span class="partner">Деловая Россия — Индия</span>
-      <span class="partner">МИД Российской Федерации</span>
-      <span class="partner">Московский дом соотечественника</span>
-      <span class="partner">Дом Латинской Америки</span>
-      <span class="partner">Росконгресс</span>
-      <span class="partner">Дом русского зарубежья</span>
     </div>
   </div>
 </section>
@@ -1180,7 +1170,7 @@ input,textarea{font-family:inherit}
         <!-- Яндекс.Карта — ул. Бауманская, д. 68/8, стр. 1 -->
         <div style="margin-top:24px;border:1.5px solid var(--rule);overflow:hidden;height:320px">
           <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=37.680600%2C55.769700&z=15&pt=37.680600%2C55.769700,pm2rdl~%D1%83%D0%BB.+%D0%91%D0%B0%D1%83%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+68%2F8&l=map"
+            src="https://yandex.ru/map-widget/v1/?ll=37.681400%2C55.769300&z=16&pt=37.681400%2C55.769300,pm2rdl~%D0%91%D0%B0%D1%83%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+68%2F8+%D1%81%D1%82%D1%80.+1&l=map"
             width="100%"
             height="320"
             frameborder="0"
